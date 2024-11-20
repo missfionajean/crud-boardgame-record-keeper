@@ -47,7 +47,10 @@ mongoose.connection.on("connected", () => {
 	console.log(`Connected to MongoDB ${mongoose.connection.name}`);
 });
 
-/* imported data models will go here: const var = require(path) */
+// imports data models to format info for MongoDB interaction
+const Record = require("./models/record.js")
+const Player = require("./models/player.js")
+
 
 /* ----------------------------------------------------------- */
 /* -------------------------- Server ------------------------- */
@@ -67,3 +70,10 @@ app.listen(PORT, () => {
 /* ----------------------------------------------------------- */
 /* --------------------------- HTTP -------------------------- */
 /* ----------------------------------------------------------- */
+
+/* MAIN INDEX */
+
+// GET req; homepage, "/"
+app.get("/", (req, res) => {
+	res.render("index.ejs");
+});
