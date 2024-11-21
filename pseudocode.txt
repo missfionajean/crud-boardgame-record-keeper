@@ -1,0 +1,13 @@
+Weighted vs unweighted leaderboards - factors in how much that person is actually here and adjusts standings accordingly, so Dan/Fiona don't dominate
+
+Dynamic leaderboards - populate when loading, not stored elsewhere; orders player profiles based on a point value that is given based on how many people they beat in any given game, not the place they finished (gives more weight to games with more people) 
+
+Filters - can be generated based on different criteria, such as all-time, specific games or genres, etc.
+
+Learning Profiles - User input is minimal, instead their profile will adjust itself based on their performance and play records (strengths, favorite genre, etc)
+
+Level Up System - This is fun, but can get dicey; maybe base it off number of games played rather than specific performance (passive incentive)
+
+Avatars - Player should pick a color for their avatar, which will change shape as they level-up (i.e. pawn -> bishop -> knight -> rook -> queen -> king or the like [ASK DAN HIS OPINION])
+
+Still need a solution for co-op games...

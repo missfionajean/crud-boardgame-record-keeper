@@ -10,6 +10,8 @@ dotenv.config();
 const express = require("express");
 const app = express();
 
+/* NOTE: app essentially equals require("express")(), which would also work in place of any instance of the app variable, but this way makes the code more readable and maintainable */
+
 // imports mongoose to interface with MongoDB
 const mongoose = require("mongoose");
 
@@ -23,7 +25,7 @@ const morgan = require("morgan");
 const path = require("path");
 
 /* ----------------------------------------------------------- */
-/* ----------------------- Express.use ----------------------- */
+/* ----------------------- Middleware ------------------------ */
 /* ----------------------------------------------------------- */
 
 /* This middleware parses incoming HTTP request bodies, extracts data into a JavaScript object as "req.body" */
@@ -48,9 +50,8 @@ mongoose.connection.on("connected", () => {
 });
 
 // imports data models to format info for MongoDB interaction
-const Record = require("./models/record.js")
-const Player = require("./models/player.js")
-
+const Record = require("./models/record.js");
+const Player = require("./models/player.js");
 
 /* ----------------------------------------------------------- */
 /* -------------------------- Server ------------------------- */

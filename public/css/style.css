@@ -1,5 +1,86 @@
+/* FONTS */
+
+@import url("https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&family=Texturina:ital,opsz,wght@0,12..72,100..900;1,12..72,100..900&display=swap");
+
+/* GLOBAL */
+
 * {
 	box-sizing: border-box;
 	color: white;
 	background-color: darkslategray;
+	font-family: "Almendra", sans-serif;
+	font-weight: 350;
+	font-size: 18px;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	margin: 2em;
+	display: flex;
+	flex-direction: column;
+	justify-self: center;
+	align-items: center;
+	width: 80dvw;
+	max-width: 700px;
+	gap: 1.2em;
+}
+
+/* GENERAL ELEMENTS */
+
+h1 {
+	font-size: 2.2em;
+}
+
+h2 {
+	font-size: 1.2em;
+}
+
+a {
+	text-decoration: none;
+}
+
+p,
+a,
+label,
+input {
+	font-family: "Texturina", sans-serif;
+	font-weight: 250;
+}
+
+ul {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+	list-style-type: none;
+}
+
+/* BUTTONS */
+
+button {
+	width: 250px;
+	height: 50px;
+	font-size: 1.1em;
+}
+
+a:hover,
+button:hover {
+	cursor: pointer;
+	color: indianred;
+}
+
+.button-box {
+	display: flex;
+	gap: 1em;
+	margin-top: 1em;
+	justify-content: center;
+	align-items: center;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 500px) {
+	* {
+		font-size: 16px;
+	}
 }
