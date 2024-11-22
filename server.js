@@ -10,7 +10,7 @@ dotenv.config();
 const express = require("express");
 const app = express();
 
-/* NOTE: app essentially equals require("express")(), which would also work in place of any instance of the app variable, but this way makes the code more readable and maintainable */
+/* NOTE: "app" essentially equals "require("express")()", which would also work in place of any instance of the app variable, but this way makes the code more readable and maintainable */
 
 // imports mongoose to interface with MongoDB
 const mongoose = require("mongoose");

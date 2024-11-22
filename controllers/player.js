@@ -76,3 +76,16 @@ const destroy = async (req, res) => {
 	// redirect to all profiles page after back-end delete
 	res.redirect("/heroes");
 };
+
+/* EXPORT */
+
+module.exports = {
+	index,
+	show,
+	add,
+	create,
+	edit,
+	update,
+	remove,
+	destroy,
+};

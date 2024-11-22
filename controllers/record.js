@@ -1,7 +1,6 @@
 // import database models for proper schema format
 const Record = require("./models/record.js");
 const Player = require("./models/player.js");
-const e = require("express");
 
 /* INCREMENT FUNCTIONS (FOR EXP & GAMES PLAYED) */
 
@@ -173,4 +172,18 @@ const destroy = async (req, res) => {
 	await Record.findByIdAndDelete(req.params.recordId);
 	// redirect to all records page after back-end delete
 	res.redirect("/champions/records");
+};
+
+/* EXPORT */
+
+module.exports = {
+	leader,
+	index,
+	show,
+	add,
+	create,
+	edit,
+	update,
+	remove,
+	destroy,
 };
