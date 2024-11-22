@@ -25,6 +25,38 @@ const morgan = require("morgan");
 const path = require("path");
 
 /* ----------------------------------------------------------- */
+/* ------------------------ Controllers ---------------------- */
+/* ----------------------------------------------------------- */
+
+// imports controllers from ctrl dir (with models nested inside)
+const playerCtrl = require("./controllers/player.js");
+const recordCtrl = require("./controllers/record.js");
+
+/* CONTROLLER SHORTCUTS 
+
+// player
+playerCtrl.index
+playerCtrl.show
+playerCtrl.new
+playerCtrl.create
+playerCtrl.edit
+playerCtrl.update
+playerCtrl.remove
+playerCtrl.destroy
+
+// record
+recordCtrl.index
+recordCtrl.show
+recordCtrl.new
+recordCtrl.create
+recordCtrl.edit
+recordCtrl.update
+recordCtrl.remove
+recordCtrl.destroy
+
+*/
+
+/* ----------------------------------------------------------- */
 /* ----------------------- Middleware ------------------------ */
 /* ----------------------------------------------------------- */
 
@@ -49,10 +81,6 @@ mongoose.connection.on("connected", () => {
 	console.log(`Connected to MongoDB ${mongoose.connection.name}`);
 });
 
-// imports data models to format info for MongoDB interaction
-const Record = require("./models/record.js");
-const Player = require("./models/player.js");
-
 /* ----------------------------------------------------------- */
 /* -------------------------- Server ------------------------- */
 /* ----------------------------------------------------------- */
@@ -76,5 +104,5 @@ app.listen(PORT, () => {
 
 // GET req; homepage, "/"
 app.get("/", (req, res) => {
-	res.render("index.ejs");
+	res.render("home.ejs");
 });

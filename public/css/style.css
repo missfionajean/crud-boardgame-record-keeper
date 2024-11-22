@@ -58,7 +58,7 @@ ul {
 /* BUTTONS */
 
 button {
-	width: 250px;
+	width: 225px;
 	height: 50px;
 	font-size: 1.1em;
 }
@@ -75,6 +75,15 @@ button:hover {
 	margin-top: 1em;
 	justify-content: center;
 	align-items: center;
+}
+
+/* CLASSES */
+
+.page-head {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 5px;
 }
 
 /* RESPONSIVE DESIGN */
