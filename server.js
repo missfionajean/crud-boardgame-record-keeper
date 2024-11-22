@@ -45,6 +45,7 @@ playerCtrl.remove
 playerCtrl.destroy
 
 // record
+recordCtrl.leader
 recordCtrl.index
 recordCtrl.show
 recordCtrl.new

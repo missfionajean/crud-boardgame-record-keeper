@@ -72,7 +72,7 @@ const remove = async (req, res) => {
 // deletes player profile (back-end only)
 const destroy = async (req, res) => {
 	// grab DB entry and updates properties on back end
-	const chosenPlayer = await Player.findByIdAndDelete(req.params.playerId);
+	await Player.findByIdAndDelete(req.params.playerId);
 	// redirect to all profiles page after back-end delete
 	res.redirect("/heroes");
 };

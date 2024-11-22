@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 // sets format for game record database entry
 const gameRecord = new mongoose.Schema({
-    gameDate:String,
+    gameDate: String,
 	gameName: String,
 	gameWinners: [{ type: mongoose.Schema.Types.ObjectId, ref: "Player" }],
 	runnersUp: [{ type: mongoose.Schema.Types.ObjectId, ref: "Player" }],
@@ -14,7 +14,7 @@ const gameRecord = new mongoose.Schema({
 module.exports = mongoose.model("greendragon", gameRecord);
 
 /* REFERENCE:
-gameDate = date for game, mm/dd/yy (reverse array when displaying)
+gameDate = date for game using html date input "yyyy-mm-dd"
 gameName = name of board game (will ref the hoard - but not now)
 gameWinners = array of user(s) who will receive 2 exp pts
 runnersUp = array of user(s) who will receive 1 exp pt
