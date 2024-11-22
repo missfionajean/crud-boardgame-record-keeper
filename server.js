@@ -32,31 +32,6 @@ const path = require("path");
 const playerCtrl = require("./controllers/player.js");
 const recordCtrl = require("./controllers/record.js");
 
-/* CONTROLLER SHORTCUTS 
-
-// player
-playerCtrl.index
-playerCtrl.show
-playerCtrl.new
-playerCtrl.create
-playerCtrl.edit
-playerCtrl.update
-playerCtrl.remove
-playerCtrl.destroy
-
-// record
-recordCtrl.leader
-recordCtrl.index
-recordCtrl.show
-recordCtrl.new
-recordCtrl.create
-recordCtrl.edit
-recordCtrl.update
-recordCtrl.remove
-recordCtrl.destroy
-
-*/
-
 /* ----------------------------------------------------------- */
 /* ----------------------- Middleware ------------------------ */
 /* ----------------------------------------------------------- */
@@ -101,9 +76,103 @@ app.listen(PORT, () => {
 /* --------------------------- HTTP -------------------------- */
 /* ----------------------------------------------------------- */
 
-/* MAIN INDEX */
+/* CONTROLLER SHORTCUTS 
+
+// player
+playerCtrl.index
+playerCtrl.show
+playerCtrl.new
+playerCtrl.create
+playerCtrl.edit
+playerCtrl.update
+playerCtrl.remove
+playerCtrl.destroy
+
+// record
+recordCtrl.leader
+recordCtrl.index
+recordCtrl.show
+recordCtrl.new
+recordCtrl.create
+recordCtrl.edit
+recordCtrl.update
+recordCtrl.remove
+recordCtrl.destroy
+
+*/
+
+/* --------- */
+/* HOME PAGE */
+/* --------- */
 
 // GET req; homepage, "/"
 app.get("/", (req, res) => {
 	res.render("home.ejs");
 });
+
+/* -------------- */
+/* DRAGON'S HOARD */
+/* -------------- */
+
+// to be imported (and given cross-functionality with record CRUD)
+
+/* ------------- */
+/* DEN OF HEROES */
+/* ------------- */
+
+// all players index page
+app.get("/heroes", playerCtrl.index);
+
+// new player profile form page
+app.get("/heroes/new", playerCtrl.new);
+
+// back-end profile creation
+app.post("/heroes", playerCtrl.create);
+
+// profile show pages
+app.get("/heroes/:playerId", playerCtrl.show);
+
+// delete profile confirmation page
+app.get("/heroes/:playerId/delete", playerCtrl.remove);
+
+// back-end profile deletion
+app.delete("/heroes/:playerId", playerCtrl.destroy);
+
+// edit profile form page
+app.get("/heroes/:playerId/edit", playerCtrl.edit);
+
+// back-end profile update
+app.put("/heroes/:playerId", playerCtrl.update);
+
+/* ----------------- */
+/* HALL OF CHAMPIONS */
+/* ----------------- */
+
+// leaderboard splash page (links to user show pages)
+app.get("/champions", recordCtrl.leader);
+
+/* NOTE: might be smart to create diff controllers for records and leaderboards if you build out the functionality of the latter, but for now this is fine since it's just one page */
+
+// all records index page
+app.get("/champion/records", recordCtrl.index);
+
+// new record form page
+app.get("/champions/records/new", recordCtrl.new);
+
+// back-end record creation
+app.post("/champions/records", recordCtrl.create);
+
+// record show pages
+app.get("/champions/records/:recordId", recordCtrl.show);
+
+// delete record confirmation page
+app.get("/champions/records/:recordId/delete", recordCtrl.remove);
+
+// back-end record deletion
+app.delete("/champions/records/:recordId", recordCtrl.destroy);
+
+// edit record form page
+app.get("/champions/records/:recordId/edit", recordCtrl.edit);
+
+// back-end record update
+app.put("/champions/records/:recordId", recordCtrl.update);
