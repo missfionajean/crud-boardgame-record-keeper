@@ -1,5 +1,5 @@
 // import database model for proper schema format
-const Player = require("./models/player.js");
+const Player = require("../models/player.js");
 
 /* VIEW PROFILES */
 

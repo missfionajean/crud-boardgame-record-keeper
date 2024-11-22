@@ -12,7 +12,7 @@ const playerProfile = new mongoose.Schema({
 });
 
 // exports model for use in other files
-module.exports = mongoose.model("greendragon", playerProfile);
+module.exports = mongoose.model("Player", playerProfile);
 
 /* REFERENCE:
 playerName = first name of user

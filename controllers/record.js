@@ -1,6 +1,6 @@
 // import database models for proper schema format
-const Record = require("./models/record.js");
-const Player = require("./models/player.js");
+const Record = require("../models/record.js");
+const Player = require("../models/player.js");
 
 /* INCREMENT FUNCTIONS (FOR EXP & GAMES PLAYED) */
 

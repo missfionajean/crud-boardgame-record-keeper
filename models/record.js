@@ -11,7 +11,7 @@ const gameRecord = new mongoose.Schema({
 });
 
 // exports model for use in other files
-module.exports = mongoose.model("greendragon", gameRecord);
+module.exports = mongoose.model("Record", gameRecord);
 
 /* REFERENCE:
 gameDate = date for game using html date input "yyyy-mm-dd"

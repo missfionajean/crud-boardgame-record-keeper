@@ -81,7 +81,7 @@ app.listen(PORT, () => {
 // player
 playerCtrl.index
 playerCtrl.show
-playerCtrl.new
+playerCtrl.add
 playerCtrl.create
 playerCtrl.edit
 playerCtrl.update
@@ -92,7 +92,7 @@ playerCtrl.destroy
 recordCtrl.leader
 recordCtrl.index
 recordCtrl.show
-recordCtrl.new
+recordCtrl.add
 recordCtrl.create
 recordCtrl.edit
 recordCtrl.update
@@ -124,7 +124,7 @@ app.get("/", (req, res) => {
 app.get("/heroes", playerCtrl.index);
 
 // new player profile form page
-app.get("/heroes/new", playerCtrl.new);
+app.get("/heroes/new", playerCtrl.add);
 
 // back-end profile creation
 app.post("/heroes", playerCtrl.create);
@@ -154,10 +154,10 @@ app.get("/champions", recordCtrl.leader);
 /* NOTE: might be smart to create diff controllers for records and leaderboards if you build out the functionality of the latter, but for now this is fine since it's just one page */
 
 // all records index page
-app.get("/champion/records", recordCtrl.index);
+app.get("/champions/records", recordCtrl.index);
 
 // new record form page
-app.get("/champions/records/new", recordCtrl.new);
+app.get("/champions/records/new", recordCtrl.add);
 
 // back-end record creation
 app.post("/champions/records", recordCtrl.create);
