@@ -127,7 +127,7 @@ app.get("/heroes", playerCtrl.index);
 app.get("/heroes/new", playerCtrl.add);
 
 // back-end profile creation
-app.post("/heroes", playerCtrl.create);
+app.post("/heroes", playerCtrl.test);//will be create
 
 // profile show pages
 app.get("/heroes/:playerId", playerCtrl.show);
@@ -160,7 +160,7 @@ app.get("/champions/records", recordCtrl.index);
 app.get("/champions/records/new", recordCtrl.add);
 
 // back-end record creation
-app.post("/champions/records", recordCtrl.create);
+app.post("/champions/records", recordCtrl.test); //will be create
 
 // record show pages
 app.get("/champions/records/:recordId", recordCtrl.show);

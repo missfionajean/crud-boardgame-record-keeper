@@ -72,8 +72,19 @@ const show = async (req, res) => {
 /* ADD NEW RECORD */
 
 // display add record form
-const add = (req, res) => {
-	res.render("records/add.ejs");
+const add = async (req, res) => {
+	/* creating default date to populate input */
+	// creates new date (default formatting)
+	const date = new Date();
+	// formats date string for use in HTML form
+	const today = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+
+	/* grabbing list of players to populate  */
+	// finds all players in database and stores in var
+	const allPlayers = await Player.find()
+
+	// renders add new record form with date as local var
+	res.render("records/add.ejs", { date: today, players: allPlayers });
 };
 
 // create new record in database (back-end only)
@@ -174,6 +185,11 @@ const destroy = async (req, res) => {
 	res.redirect("/champions/records");
 };
 
+/* TEST */
+const test = (req, res) => {
+	console.log(req.body)
+}
+
 /* EXPORT */
 
 module.exports = {
@@ -186,4 +202,5 @@ module.exports = {
 	update,
 	remove,
 	destroy,
+	test
 };

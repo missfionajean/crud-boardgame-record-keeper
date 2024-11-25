@@ -5,8 +5,9 @@ const mongoose = require("mongoose");
 const playerProfile = new mongoose.Schema({
 	playerName: String,
 	playerTitle: String,
-	playerRank: String,
+	playerColor: String,
 	playerAvatar: String,
+	playerRank: { type: String, default: "Hatchling" },
 	playerExp: { type: Number, default: 0 },
 	gamesPlayed: { type: Number, default: 0 },
 });
@@ -17,8 +18,9 @@ module.exports = mongoose.model("Player", playerProfile);
 /* REFERENCE:
 playerName = first name of user
 playerTitle = adjective chosen by user
-playerRank = guild rank (advances through a list - TBD)
+playerColor = hex code for color of avatar (to use if needed)
 playerAvatar = image src based on user color choice
+playerRank = guild rank (advances through a list - TBD)
 playerExp = number increased after each game (1pt for playing, 1pt for winning - as of right now), determines guild rank
 gamesPlayed = all-time games played, to be used for weighting later
 

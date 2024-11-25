@@ -32,6 +32,8 @@ const add = (req, res) => {
 
 // create new profile in database (back-end only)
 const create = async (req, res) => {
+	// assign an image to profile based on color
+
 	// await DB profile creation before redirect
 	const newPlayer = await Player.create(req.body);
 	// redirect to show page for new profile
@@ -77,6 +79,12 @@ const destroy = async (req, res) => {
 	res.redirect("/heroes");
 };
 
+/* TEST */
+const test = (req, res) => {
+	console.log(req.body)
+}
+
+
 /* EXPORT */
 
 module.exports = {
@@ -88,4 +96,5 @@ module.exports = {
 	update,
 	remove,
 	destroy,
+	test
 };

@@ -86,6 +86,22 @@ button:hover {
 	gap: 5px;
 }
 
+.data-entry {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.input-exp {
+	font-size: 0.7em;
+}
+
+/* ID-SPECIFIC */
+
+#playerAvatar {
+	display: none;
+}
+
 /* RESPONSIVE DESIGN */
 
 @media (max-width: 500px) {

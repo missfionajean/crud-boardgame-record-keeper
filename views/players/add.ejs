@@ -8,10 +8,42 @@
 	</head>
 	<body>
 		<h1>Create Profile</h1>
+        <form action="/heroes" method="POST" class="data-entry">
+
+            <!-- player first name (text input) -->
+            <label for="playerName">Name</label>
+            <input type="text" name="playerName" id="playerName">
+            <p class="input-exp">Enter a name for your hero. It can be your first name or an esily identifiable moniker. As long as people know it's you, it's cool!</p>
+
+            <!-- player title, adjective (text input) -->
+            <label for="playerTitle">Title</label>
+            <input type="text" name="playerTitle" id="playerTitle">
+            <p class="input-exp">Enter a word(s) to appear after your name. Ex: Entering the name "James" and the title "Fabulous Sexy Beast" will make your hero appear as "James the Fabulous Sexy Beast".</p>
+
+            <!-- player color drop-down (color type) -->
+            <label for="playerColor">Color</label>
+            <select name="playerColor" id="playerColor">
+                <option value="242424">Black</option>
+                <option value="3a76d0">Blue</option>
+                <option value="9f7a72">Brown</option>
+                <option value="3ad0ac">Cyan</option>
+                <option value="4ad03a">Green</option>
+                <option value="d03ac5">Magenta</option>
+                <option value="d0703a">Orange</option>
+                <option value="f561be">Pink</option>
+                <option value="8a3ad0">Purple</option>
+                <option value="d03a3a">Red</option>
+                <option value="d9d9d9">Silver</option>
+                <option value="d0c13a">Yellow</option>
+            </select>
+            <p class="input-exp">Select a color to indentify your hero. This will determine the color of your avatar, as well as your name in certain sitautions.</p>
+
+            <!-- pass playerAvatar to req.body (hidden in CSS) -->
+            <input type="text" id="playerAvatar" name="playerAvatar" value="">
+
         <div class="button-box">
-			<!-- <form action=""> -->
-                <button type="submit">Submit Profile</button>
-            <!-- </form> -->
+            <button type="submit">Submit Profile</button>
+        </form>
             <form action="/heroes">
                 <button type="submit">Return to Den</button>
             </form>
@@ -21,3 +53,13 @@
         </div>
 	</body>
 </html>
+
+<!--const playerProfile = new mongoose.Schema({
+	playerName: String,
+	playerTitle: String,
+	playerColor: String,
+	playerAvatar: String,
+	playerRank: { type: String, default: "Hatchling" },
+	playerExp: { type: Number, default: 0 },
+	gamesPlayed: { type: Number, default: 0 },
+});-->

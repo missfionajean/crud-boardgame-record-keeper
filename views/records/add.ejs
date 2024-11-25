@@ -10,9 +10,59 @@
 		<section class="page-head">
 			<h1>Create New Record</h1>
 		</section>
+
+		<form action="/champions/records" method="POST" class="data-entry">
+
+			<!-- calendar date selector (pre-filled) -->
+			<label for="gameDate">Date</label>
+			<input type="date" name="gameDate" id="gameDate" value=<%= date %>>
+
+			<!-- text input for now -->
+			<label for="gameName">Game Played</label>
+			<input type="text" name="gameName" id="gameName" />
+
+			<!-- game winners (can select multiple) -->
+			<div id="winner-list">
+				<label for="gameWinners">Winner(s)</label>
+				<select name="gameWinners" id="gameWinners">
+					<% players.forEach((player) => { %>
+						<option value=<%= player._id %>>
+							<%= player.name %>
+						</option>
+					<% }) %>
+				</select>
+			</div>
+			<button type="button" id="add-winner">Add Player</button>
+
+			<!-- runners up (can select multiple) -->
+			<div id="runner-list">
+				<label for="runnersUp">Runner(s) Up</label>
+				<select name="runnersUp" id="runnersUp">
+					<% players.forEach((player) => { %>
+						<option value=<%= player._id %>>
+							<%= player.name %>
+						</option>
+					<% }) %>
+				</select>
+			</div>
+			<button type="button" id="add-runner">Add Player</button>
+
+			<!-- memories for standout moments, etc (textarea) -->
+
+			<button type="submit">Submit Record</button>
+		</form>
+
+		<!-- const gameRecord = new mongoose.Schema({
+		gameDate: String,
+		gameName: String,
+		gameWinners: [{ type: mongoose.Schema.Types.ObjectId, ref: "Player" }],
+		runnersUp: [{ type: mongoose.Schema.Types.ObjectId, ref: "Player" }],
+		memories: String,
+		}); -->
+
 		<div class="button-box">
 			<!-- <form action=""> -->
-				<button type="submit">Submit Record</button>
+			<button type="submit">Submit Record</button>
 			<!-- </form> -->
 			<form action="/champions/records">
 				<button type="submit">Return to Records</button>
@@ -21,5 +71,6 @@
 				<button type="submit">Return To Lobby</button>
 			</form>
 		</div>
+		<script src="/js/add-winners.js"></script>
 	</body>
 </html>

@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 // sets format for game record database entry
 const gameRecord = new mongoose.Schema({
-    gameDate: String,
+	gameDate: String,
 	gameName: String,
 	gameWinners: [{ type: mongoose.Schema.Types.ObjectId, ref: "Player" }],
 	runnersUp: [{ type: mongoose.Schema.Types.ObjectId, ref: "Player" }],
