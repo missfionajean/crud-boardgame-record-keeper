@@ -9,6 +9,17 @@
 	<body>
 		<section class="page-head">
 			<h1>The Den of Heroes</h1>
+			<p>Click hero name for to view/edit profile:</p>
+		</section>
+		<section id="hero-roster">
+			<ul>
+				<% players.forEach((player) => { %>
+					<li>
+						<img src=<%= player.playerAvatar %> alt="Player Avatar" class="inline-avatar">
+						<a href="/heroes/<%= player._id %>"><%= player.playerName %> the <%= player.playerTitle %></a>
+					</li>
+				<% }) %>
+			</ul>
 		</section>
 		<div class="button-box">
 			<form action="/heroes/new">

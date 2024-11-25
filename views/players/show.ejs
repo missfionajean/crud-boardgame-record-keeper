@@ -7,6 +7,34 @@
 		<title>Document</title>
 	</head>
 	<body>
+		<section class="page-head">
+			<div id="show-name">
+				<img src=<%= playerAvatar %> alt="Player Avatar" class="show-avatar" id="show-av1">
+				<h1><%= playerName %></h1>
+				<img src=<%= playerAvatar %> alt="Player Avatar" class="show-avatar" id="show-av2">
+			</div>
+			<p>The <%= playerTitle %></p>
+		</section>
+		<section id="hero-info">
+			<ul>
+				<li>
+					<h2>Current Rank</h2>
+					<p><%= playerRank %></p>
+				</li>
+				<li>
+					<h2>Total Games Played</h2>
+					<p><%= gamesPlayed %></p>
+				</li>
+				<li>
+					<h2>Total Exp Earned</h2>
+					<p><%= playerExp %></p>
+				</li>
+				<li>
+					<h2>Exp To Next Rank</h2>
+					<p><%= 5 - (playerExp % 5) %></p>
+				</li>
+			</ul>
+		</section>
 		<div class="button-box">
             <!-- <form action="dynamic-edit-link"> -->
 				<button type="submit">Edit Profile</button>

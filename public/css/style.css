@@ -96,10 +96,46 @@ button:hover {
 	font-size: 0.7em;
 }
 
+.inline-avatar {
+	width: 2em;
+}
+
 /* ID-SPECIFIC */
+
+#hero-roster li {
+	display: flex;
+	gap: 0.7em;
+	align-items: center;
+}
+
+#hero-roster a {
+	font-size: 1.2em;
+}
 
 #playerAvatar {
 	display: none;
+}
+
+#show-name {
+	display: flex;
+	gap: 1em;
+}
+
+#show-name img {
+	width: 3em;
+	height: 3em;
+}
+
+#show-av2 {
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
+}
+
+#hero-info li {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-block: 0.25em;
 }
 
 /* RESPONSIVE DESIGN */

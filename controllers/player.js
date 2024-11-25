@@ -32,8 +32,15 @@ const add = (req, res) => {
 
 // create new profile in database (back-end only)
 const create = async (req, res) => {
+	/* finish filling model for proper DB interaction */
+	// storing passed value from form in variable
+	const color = req.body.playerColor
 	// assign an image to profile based on color
+	req.body.playerAvatar = "/images/" + color + ".png"
+	// update playerColor to hexcode format
+	req.body.playerColor = "#" + color
 
+	/* adding completed model to MongoDB */
 	// await DB profile creation before redirect
 	const newPlayer = await Player.create(req.body);
 	// redirect to show page for new profile
