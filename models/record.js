@@ -5,8 +5,8 @@ const mongoose = require("mongoose");
 const gameRecord = new mongoose.Schema({
 	gameDate: String,
 	gameName: String,
-	gameWinners: [String],
-	runnersUp: [String],
+	gameWinners: [],
+	runnersUp: [],
 	memories: String,
 });
 

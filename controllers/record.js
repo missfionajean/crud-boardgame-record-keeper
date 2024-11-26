@@ -55,6 +55,30 @@ const index = async (req, res) => {
 const show = async (req, res) => {
 	// grabs clicked record info to populate show page
 	const chosenRecord = await Record.findById(req.params.recordId);
+
+	/* grabbing player names */
+	// setting array to populate
+	const winnerProfs = []
+	// for loop to grab all profiles from DB
+	for (winner of chosenRecord.gameWinners) {
+		const winnerProf = await Player.findById(winner)
+		winnerProfs.push(winnerProf)
+	}
+	// replacing property in local object ot be passed
+	chosenRecord.gameWinners = winnerProfs
+
+	/* grabbing runner-up names */
+	// setting array to populate
+	const runnerProfs = []
+	// for loop to grab all profiles from DB
+	for (runner of chosenRecord.runnersUp) {
+		const runnerProf = await Player.findById(runner)
+		runnerProfs.push(runnerProf)
+	}
+	// replacing property in local object ot be passed
+	chosenRecord.runnersUp = runnerProfs
+
+	console.log(chosenRecord)
 	// renders show page with local object variables
 	res.render("records/show.ejs", {record: chosenRecord});
 };

@@ -22,19 +22,25 @@
 				</li>
 				<li>
 					<h2>Winner(s)</h2>
-					<% record.gameWinners.forEach((winner) => { %>
-						<a href="/heroes/<%= winner %>">
-							<%= winner %>
-						</a>
-					<% }) %>
+					<div class="player-box">
+						<% record.gameWinners.forEach((winner) => { %>
+							<a href="/heroes/<%= winner._id %>">
+								<img src=<%= winner.playerAvatar %> alt="Player Avatar" class="inline-avatar">
+								<%= winner.playerName %> the <%= winner.playerTitle %>
+							</a>
+						<% }) %>
+					</div>
 				</li>
 				<li>
 					<h2>Runner(s) Up</h2>
-					<% record.runnersUp.forEach((runner) => { %>
-						<a href="/heroes/<%= runner %>">
-							<%= runner %>
-						</a>
-					<% }) %>
+					<div class="player-box">
+						<% record.runnersUp.forEach((runner) => { %>
+							<a href="/heroes/<%= runner._id %>">
+								<img src=<%= runner.playerAvatar %> alt="Player Avatar" class="inline-avatar">
+								<%= runner.playerName %> the <%= runner.playerTitle %>
+							</a>
+						<% }) %>
+					</div>
 				</li>
 				<li>
 					<h2>Memories</h2>
