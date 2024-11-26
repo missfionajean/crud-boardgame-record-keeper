@@ -7,6 +7,36 @@
 		<title>Delete Profile</title>
 	</head>
 	<body>
-		Profile Remove Confirm Page
+		<section class="page-head">
+			<h1>Delete Profile</h1>
+			<p>Are you sure you want to delete the following profile?</p>
+		</section>
+		<section class="delete-info">
+			<ul>
+				<li>
+					<h2><%= playerName %> the <%= playerTitle %></h2>
+				</li>
+				<li>
+					Strengths
+					<p>
+						<% playerStrengths.forEach((strength) => { %>
+							<%= strength %>
+						<% }) %>
+					</p>
+				</li>
+				<li>
+					Favorites
+					<p><%= playerFaves %></p>
+				</li>
+			</ul>
+		</section>
+		<div class="button-box">
+			<form action="/heroes/<%=_id%>?_method=DELETE" method="POST"">
+				<button type="submit">Confirm Delete</button>
+			</form>
+			<form action="/heroes/<%=_id%>">
+				<button type="submit">Cancel Delete</button>
+			</form>
+		</div>	
 	</body>
 </html>

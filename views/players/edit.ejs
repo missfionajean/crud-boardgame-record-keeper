@@ -7,19 +7,109 @@
 		<title>Document</title>
 	</head>
 	<body>
-		<section class="page-head">
-			<h1>Edit Profile</h1>
-		</section>
-		<div class="button-box">
-			<!-- <form action=""> -->
-				<button type="submit">Update Profile</button>
-			<!-- </form> -->
-			<form action="/heroes">
-				<button type="submit">Return to Den</button>
+		<h1>Edit Profile</h1>
+        <form action="/heroes/<%=_id%>?_method=PUT" method="POST" class="data-entry">
+
+            <!-- player first name (text input) -->
+            <label for="playerName">Name</label>
+            <p class="input-exp">Enter a name for your hero. It should be your first name or an easily identifiable moniker.</p>
+            <input type="text" name="playerName" id="playerName" value="<%= playerName %>">
+
+            <!-- player title, adjective (text input) -->
+            <label for="playerTitle">Title</label>
+            <p class="input-exp">Enter a title to appear after your name. Ex: "James" + "Fabulous Sexy Beast" appears as "James the Fabulous Sexy Beast".</p>
+            <input type="text" name="playerTitle" id="playerTitle" value="<%= playerTitle %>">
+
+            <!-- player color drop-down (color type) -->
+            <label for="playerColor">Color</label>
+            <p class="input-exp">Select a color for your dragon avatar, as well as your name on certain pages.</p>
+            <select name="playerColor" id="playerColor">
+                <option value="242424"
+				<% if (playerColor === "#242424") { %>
+				selected
+				<% } %>
+				>Black</option>
+                <option value="3a76d0"
+				<% if (playerColor === "#3a76d0") { %>
+					selected
+				<% } %>
+				>Blue</option>
+                <option value="9f7a72"
+				<% if (playerColor === "#9f7a72") { %>
+					selected
+				<% } %>
+				>Brown</option>
+                <option value="3ad0ac"
+				<% if (playerColor === "#3ad0ac") { %>
+					selected
+				<% } %>
+				>Cyan</option>
+                <option value="4ad03a"
+				<% if (playerColor === "#4ad03a") { %>
+					selected
+				<% } %>
+				>Green</option>
+                <option value="d03ac5"
+				<% if (playerColor === "#d03ac5") { %>
+					selected
+				<% } %>
+				>Magenta</option>
+                <option value="d0703a"
+				<% if (playerColor === "#d0703a") { %>
+					selected
+				<% } %>
+				>Orange</option>
+                <option value="f561be"
+				<% if (playerColor === "#f561be") { %>
+					selected
+				<% } %>
+				>Pink</option>
+                <option value="8a3ad0"
+				<% if (playerColor === "#8a3ad0") { %>
+					selected
+				<% } %>
+				>Purple</option>
+                <option value="d03a3a"
+				<% if (playerColor === "#d03a3a") { %>
+					selected
+				<% } %>
+				>Red</option>
+                <option value="d9d9d9"
+				<% if (playerColor === "#d9d9d9") { %>
+					selected
+				<% } %>
+				>Silver</option>
+                <option value="d0c13a"
+				<% if (playerColor === "#d0c13a") { %>
+					selected
+				<% } %>
+				>Yellow</option>
+            </select>
+
+            <!-- pass playerAvatar to req.body (hidden in CSS) -->
+            <input type="text" id="playerAvatar" name="playerAvatar" value="">
+
+            <!-- strengths (three text inputs) -->
+            <label for="playerStrengths">Strengths</label>
+            <p class="input-exp">Enter your three greatest strengths at the board game table.</p>
+            <input type="text" name="playerStrengths" id="playerStrengths" value="<%= playerStrengths[0] %>">
+            <input type="text" name="playerStrengths" id="playerStrengths" value="<%= playerStrengths[1] %>">
+            <input type="text" name="playerStrengths" id="playerStrengths" value="<%= playerStrengths[2] %>">
+
+            <!-- about player (three text inputs) -->
+            <label for="playerFaves">Favorites</label>
+            <p class="input-exp">Enter your favorite board games, types of board games, whatever you want!</p>
+            <textarea name="playerFaves" id="playerFaves" rows="3"><%= playerFaves %></textarea>
+
+			<div class="button-box">
+				<button type="submit">Submit Changes</button>
 			</form>
-			<form action="/">
-				<button type="submit">Return To Lobby</button>
-			</form>
-		</div>
+				<form action="/heroes/<%=_id%>/delete">
+					<button type="submit">Delete Profile</button>
+				</form>
+				<form action="/heroes/<%=_id%>">
+					<button type="submit">Cancel Update</button>
+				</form>
+			</div>
 	</body>
 </html>

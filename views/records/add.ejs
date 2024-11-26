@@ -50,14 +50,15 @@
 			<button type="button" id="remove-runner">Remove Player</button>
 
 			<!-- memories for standout moments, etc (textarea) -->
-
+			<label for="memories">Memories</label>
+			<p>Standout moments, memorable plays, inside jokes, etc.</p>
+			<textarea name="memories" id="memories" rows="3"></textarea>
 		
-
 		<!-- const gameRecord = new mongoose.Schema({
 		gameDate: String,
 		gameName: String,
-		gameWinners: [{ type: mongoose.Schema.Types.ObjectId, ref: "Player" }],
-		runnersUp: [{ type: mongoose.Schema.Types.ObjectId, ref: "Player" }],
+		gameWinners: [String],
+		runnersUp: [String],
 		memories: String,
 		}); -->
 

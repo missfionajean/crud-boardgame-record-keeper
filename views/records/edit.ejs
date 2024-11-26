@@ -10,16 +10,81 @@
 		<section class="page-head">
 			<h1>Edit Record</h1>
 		</section>
+
+		<form action="/champions/records/<%=record._id%>?_method=PUT" method="POST" class="data-entry">
+
+			<!-- calendar date selector (pre-filled) -->
+			<label for="gameDate">Date</label>
+			<input type="date" name="gameDate" id="gameDate" value="<%= record.gameDate %>"/>
+
+			<!-- text input for now -->
+			<label for="gameName">Game Played</label>
+			<input type="text" name="gameName" id="gameName" value="<%= record.gameName %>"/>
+
+			<!-- game winners (can select multiple) -->
+			<label for="gameWinners">Winner(s)</label>
+				<div id="winner-list">
+					<% for (i=0;i<record.gameWinners.length;i++) { %>
+						<select name="gameWinners" id="gameWinners">
+							<% players.forEach((player) => { %>
+								<option value=<%= player._id %>
+								<% if (record.gameWinners[i] == player._id) { %>
+								selected
+								<% } %>
+								>
+									<%= player.playerName %>
+								</option>
+							<% }) %>
+						</select>
+					<% } %>
+				</div>
+			<button type="button" id="add-winner">Add Player</button>
+			<button type="button" id="remove-winner">Remove Player</button>
+
+			<!-- runners up (can select multiple) -->
+			<label for="runnersUp">Runner(s) Up</label>
+				<div id="runner-list">
+					<% for (i=0;i<record.runnersUp.length;i++) { %>
+						<select name="runnersUp" id="runnersUp">
+							<% players.forEach((player) => { %>
+								<option value=<%= player._id %>
+								<% if (record.runnersUp[i] == player._id) { %>
+								selected
+								<% } %>
+								>
+									<%= player.playerName %>
+								</option>
+							<% }) %>
+						</select>
+					<% } %>
+				</div>
+			<button type="button" id="add-runner">Add Player</button>
+			<button type="button" id="remove-runner">Remove Player</button>
+
+			<!-- memories for standout moments, etc (textarea) -->
+			<label for="memories">Memories</label>
+			<p>Standout moments, memorable plays, inside jokes, etc.</p>
+			<textarea name="memories" id="memories" rows="3"><%= record.memories %></textarea>
+		
+
+		<!-- const gameRecord = new mongoose.Schema({
+		gameDate: String,
+		gameName: String,
+		gameWinners: [String],
+		runnersUp: [String],
+		memories: String,
+		}); -->
+
 		<div class="button-box">
-			<!-- <form action=""> -->
-				<button type="submit">Submit Record</button>
-			<!-- </form> -->
-			<form action="/champions/records">
-				<button type="submit">Return to Records</button>
+			<button type="submit">Submit Changes</button>
+		</form>
+			<form action="/champions/records/<%=record._id%>/delete">
+				<button type="submit">Delete Record</button>
 			</form>
-			<form action="/">
-				<button type="submit">Return To Lobby</button>
+			<form action="/champions/records/<%=record._id%>">
+				<button type="submit">Cancel Update</button>
 			</form>
 		</div>
+		<script src="/js/add-winners.js"></script>
 	</body>
 </html>

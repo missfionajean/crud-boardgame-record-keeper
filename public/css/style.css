@@ -103,6 +103,14 @@ button:hover {
 	width: 2em;
 }
 
+.delete-info li {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-block: 0.25em;
+	max-width: 500px;
+}
+
 /* ID-SPECIFIC */
 
 #hero-roster li {
@@ -175,6 +183,13 @@ button:hover {
 	display: flex;
 	flex-direction: column;
 	gap: 0.5em;
+}
+
+#record-info li {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-block: 0.25em;
 }
 
 /* RESPONSIVE DESIGN */

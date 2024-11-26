@@ -59,6 +59,15 @@ const edit = async (req, res) => {
 
 // update profile in database (back-end only)
 const update = async (req, res) => {
+	/* finish filling model for proper DB interaction */
+	// storing passed value from form in variable
+	const color = req.body.playerColor
+	// assign an image to profile based on color
+	req.body.playerAvatar = "/images/" + color + ".png"
+	// update playerColor to hexcode format
+	req.body.playerColor = "#" + color
+
+	/* updating completed model in MongoDB */
 	// grab DB entry and updates properties on back end
 	const chosenPlayer = await Player.findByIdAndUpdate(
 		req.params.playerId,

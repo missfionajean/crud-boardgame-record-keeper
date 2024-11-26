@@ -7,6 +7,43 @@
 		<title>Document</title>
 	</head>
 	<body>
-		Remove Record Confirmation Page
+		<section class="page-head">
+			<h1>Delete Record</h1>
+			<p>Are you sure you want to delete the following record?</p>
+		</section>
+		<section class="delete-info">
+			<ul>
+				<li>
+					<h2><%= gameDate %> - <%= gameName %></h2>
+				</li>
+				<li>
+					Winner(s):
+					<p>
+						<% gameWinners.forEach((winner) => { %>
+								<%= winner %>
+						<% }) %>
+					</p>
+				</li>
+				<li>
+					Runner(s) Up:
+					<p>
+						<% runnersUp.forEach((runner) => { %>
+							<%= runner %>
+						<% }) %>
+					</p>
+				</li>
+				<li>
+					Memories: <p><%= memories %></p>
+				</li>
+			</ul>
+		</section>
+		<div class="button-box">
+			<form action="/champions/records/<%=_id%>?_method=DELETE" method="POST"">
+				<button type="submit">Confirm Delete</button>
+			</form>
+			<form action="/champions/records/<%=_id%>">
+				<button type="submit">Cancel Delete</button>
+			</form>
+		</div>	
 	</body>
 </html>

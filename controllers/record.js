@@ -55,7 +55,7 @@ const show = async (req, res) => {
 	// grabs clicked record info to populate show page
 	const chosenRecord = await Record.findById(req.params.recordId);
 	// renders show page with local object variables
-	res.render("records/show.ejs", chosenRecord);
+	res.render("records/show.ejs", {record: chosenRecord});
 };
 
 /* ADD NEW RECORD */
@@ -68,7 +68,7 @@ const add = async (req, res) => {
 	// formats date string for use in HTML form
 	const today = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 
-	/* grabbing list of players to populate  */
+	/* grabbing list of players for local object  */
 	// finds all players in database and stores in var
 	const allPlayers = await Player.find();
 
@@ -90,8 +90,10 @@ const create = async (req, res) => {
 const edit = async (req, res) => {
 	// grabs clicked record info to populate edit page
 	const chosenRecord = await Record.findById(req.params.recordId);
+	// finds all players in database and stores in var
+	const allPlayers = await Player.find();
 	// renders edit page with local object variables
-	res.render("records/edit.ejs", chosenRecord);
+	res.render("records/edit.ejs", { record: chosenRecord, players: allPlayers });
 };
 
 // update profile in database (back-end only)

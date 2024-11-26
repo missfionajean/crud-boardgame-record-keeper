@@ -10,10 +10,42 @@
 		<section class="page-head">
 			<h1>Gameplay Record</h1>
 		</section>
+		<section id="record-info">
+			<ul>
+				<li>
+					<h2>Date</h2>
+					<p><%= record.gameDate %></p>
+				</li>
+				<li>
+					<h2>Game Played</h2>
+					<p><%= record.gameName %></p>
+				</li>
+				<li>
+					<h2>Winner(s)</h2>
+					<% record.gameWinners.forEach((winner) => { %>
+						<a href="/heroes/<%= winner %>">
+							<%= winner %>
+						</a>
+					<% }) %>
+				</li>
+				<li>
+					<h2>Runner(s) Up</h2>
+					<% record.runnersUp.forEach((runner) => { %>
+						<a href="/heroes/<%= runner %>">
+							<%= runner %>
+						</a>
+					<% }) %>
+				</li>
+				<li>
+					<h2>Memories</h2>
+					<p><%= record.memories %></p>
+				</li>
+			</ul>
+		</section>
 		<div class="button-box">
-			<!-- <form action=""> -->
+			<form action="/champions/records/<%= record._id %>/edit">
 				<button type="submit">Edit Record</button>
-			<!-- </form> -->
+			</form>
 			<form action="/champions/records">
 				<button type="submit">Return to Records</button>
 			</form>
