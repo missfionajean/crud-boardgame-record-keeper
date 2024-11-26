@@ -89,6 +89,7 @@ button:hover {
 	display: flex;
 	flex-direction: column;
 	gap: 0.75em;
+	max-width: 700px;
 }
 
 .data-entry label {
@@ -158,8 +159,8 @@ button:hover {
 }
 
 #champ {
-	font-size: 2.5em;
-	margin-bottom: 0.5em;
+	font-size: 3.2em;
+	margin-bottom: 0.3em;
 }
 
 #current-ranking {
