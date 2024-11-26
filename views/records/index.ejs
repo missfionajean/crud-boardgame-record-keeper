@@ -10,6 +10,17 @@
 		<section class="page-head">
 			<h1>Gameplay Records</h1>
 		</section>
+		<section id="record-list">
+			<ul>
+				<% records.forEach((record) => { %>
+					<li>
+						<a href="/champions/records/<%= record._id %>">
+							<%= record.gameDate %> - <%= record.gameName %>
+						</a>
+					</li>
+				<% }) %>
+			</ul>
+		</section>
 		<div class="button-box">
 			<form action="/champions/records/new">
 				<button type="submit">Add New Record</button>

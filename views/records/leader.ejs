@@ -11,7 +11,17 @@
 			<h1>The Hall of Champions</h1>
 		</section>
 		<section id="leaderboard">
+			<h2>All-Time Champion</h2>
+			<h1 id="champ"><%= players[0].playerName %></h1>
 			<h2>Current Ranking of Heroes</h2>
+			<ol id="current-ranking">
+				<% players.forEach((player) => { %>
+					<li>
+						<img src=<%= player.playerAvatar %> alt="Player Avatar" class="inline-avatar">
+						<a href="/heroes/<%= player._id %>"><%= player.playerName %> the <%= player.playerTitle %></a>
+					</li>
+				<% }) %>
+			</ul>
 		</section>
 		<div class="button-box">
 			<form action="/champions/records/new">
@@ -26,3 +36,4 @@
 		</div>
 	</body>
 </html>
+

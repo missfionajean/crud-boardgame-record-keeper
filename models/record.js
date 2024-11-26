@@ -5,8 +5,8 @@ const mongoose = require("mongoose");
 const gameRecord = new mongoose.Schema({
 	gameDate: String,
 	gameName: String,
-	gameWinners: [{ type: mongoose.Schema.Types.ObjectId, ref: "Player" }],
-	runnersUp: [{ type: mongoose.Schema.Types.ObjectId, ref: "Player" }],
+	gameWinners: [String],
+	runnersUp: [String],
 	memories: String,
 });
 
@@ -16,7 +16,7 @@ module.exports = mongoose.model("Record", gameRecord);
 /* REFERENCE:
 gameDate = date for game using html date input "yyyy-mm-dd"
 gameName = name of board game (will ref the hoard - but not now)
-gameWinners = array of user(s) who will receive 2 exp pts
-runnersUp = array of user(s) who will receive 1 exp pt
+gameWinners = array of players that will help populate leaderboard
+runnersUp = array of other players, for general record keeping
 memories = textarea input to write down notable moments (to be read when going through all-games section of Hall of Champions)
 */

@@ -42,7 +42,6 @@ a {
 
 p,
 a,
-label,
 input {
 	font-family: "Texturina", sans-serif;
 	font-weight: 250;
@@ -89,7 +88,11 @@ button:hover {
 .data-entry {
 	display: flex;
 	flex-direction: column;
-	gap: 10px;
+	gap: 0.75em;
+}
+
+.data-entry label {
+	font-size: 1.5em;
 }
 
 .input-exp {
@@ -136,6 +139,42 @@ button:hover {
 	flex-direction: column;
 	align-items: center;
 	margin-block: 0.25em;
+}
+
+#leaderboard {
+	display: flex;
+	flex-direction: column;
+	gap: 0.7em;
+	align-items: center;
+}
+
+#champ {
+	font-size: 2.5em;
+	margin-bottom: 0.5em;
+}
+
+#current-ranking {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+}
+
+#current-ranking li {
+	display: flex;
+	gap: 0.7em;
+	align-items: center;
+}
+
+#winner-list {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+}
+
+#runner-list {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
 }
 
 /* RESPONSIVE DESIGN */

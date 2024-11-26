@@ -18,20 +18,12 @@
 		<section id="hero-info">
 			<ul>
 				<li>
-					<h2>Current Rank</h2>
-					<p><%= playerRank %></p>
+					<h2>Stengths</h2>
+					<p><%= playerStrengths[0] %>, <%= playerStrengths[1] %>, <%= playerStrengths[2] %></p>
 				</li>
 				<li>
-					<h2>Total Games Played</h2>
-					<p><%= gamesPlayed %></p>
-				</li>
-				<li>
-					<h2>Total Exp Earned</h2>
-					<p><%= playerExp %></p>
-				</li>
-				<li>
-					<h2>Exp To Next Rank</h2>
-					<p><%= 5 - (playerExp % 5) %></p>
+					<h2>Favorites</h2>
+					<p><%= playerFaves %></p>
 				</li>
 			</ul>
 		</section>

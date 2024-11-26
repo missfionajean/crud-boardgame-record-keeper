@@ -2,45 +2,34 @@
 const Record = require("../models/record.js");
 const Player = require("../models/player.js");
 
-/* INCREMENT FUNCTIONS (FOR EXP & GAMES PLAYED) */
-
-// playerExp = 2pts for win, 1pt for loss
-// gamesPlayed = 1pt regardless (for weighting only)
-
-const addWin = async (player) => {
-	player.playerExp += 2;
-	player.gamesPlayed += 1;
-	await player.save();
-};
-
-const addLoss = async (player) => {
-	player.playerExp += 1;
-	player.gamesPlayed += 1;
-	await player.save();
-};
-
-const subtractWin = async (player) => {
-	player.playerExp -= 2;
-	player.gamesPlayed -= 1;
-	await player.save();
-};
-
-const subtractLoss = async (player) => {
-	player.playerExp -= 1;
-	player.gamesPlayed -= 1;
-	await player.save();
-};
-
 /* LEADERBOARD */
 
 // display all-time leaderboard as HoC splash page
 const leader = async (req, res) => {
-	// grab all player profiles from database
+	// grab all records and players from database
+	const allRecords = await Record.find();
 	const allPlayers = await Player.find();
-	// sorts by most to least exp
-	await allPlayers.sort((a, b) => {
-		return b.playerExp.localeCompare(a.playerExp);
+
+	// sets up a map to track lifetime wins
+	const winMap = new Map()
+
+	// iterates through players to set map keys (value 0)
+	allPlayers.forEach((player) => {
+		winMap.set(player._id.toHexString(), {val: 0})
+	})
+
+	// parses all records for win counts (filterable later)
+	allRecords.forEach((record) => {
+		record.gameWinners.forEach((winner) => {
+			winMap.get(winner).val++;
+		})
+	})
+
+	// sorts all players by lifetime wins
+	allPlayers.sort((a, b) => {
+		return winMap.get(b._id.toHexString()).val - winMap.get(a._id.toHexString()).val;
 	});
+
 	// renders show page with local object variables
 	res.render("records/leader.ejs", { players: allPlayers });
 };
@@ -81,7 +70,7 @@ const add = async (req, res) => {
 
 	/* grabbing list of players to populate  */
 	// finds all players in database and stores in var
-	const allPlayers = await Player.find()
+	const allPlayers = await Player.find();
 
 	// renders add new record form with date as local var
 	res.render("records/add.ejs", { date: today, players: allPlayers });
@@ -91,16 +80,6 @@ const add = async (req, res) => {
 const create = async (req, res) => {
 	// await DB record creation before moving on
 	const newRecord = await Record.create(req.body);
-	// only IDs will be added to arrays, so we must populate
-	await newRecord.populate();
-	// loop to update player exp and games played (winners)
-	await newRecord.gameWinners.forEach((player) => {
-		addWin(player);
-	});
-	// same loop for losing array
-	await newRecord.runnersUp.forEach((player) => {
-		addLoss(player);
-	});
 	// redirect to show page for new record
 	res.redirect(`/champions/records/${newRecord._id}`);
 };
@@ -117,40 +96,12 @@ const edit = async (req, res) => {
 
 // update profile in database (back-end only)
 const update = async (req, res) => {
-	/* removes previous exp given */
-	// locate chosen record to remove associated exp pts
-	const chosenRecord = await Record.findById(req.params.recordId);
-	// only IDs will be added to arrays, so we must populate
-	await chosenRecord.populate();
-	// loop to update player exp and games played (winners)
-	await chosenRecord.gameWinners.forEach((player) => {
-		subtractWin(player);
-	});
-	// same loop for losing array
-	await chosenRecord.runnersUp.forEach((player) => {
-		subtractLoss(player);
-	});
-
-	/* updates the record */
 	// grab DB entry and updates properties on back end
 	const updatedRecord = await Record.findByIdAndUpdate(
 		req.params.recordId,
 		req.body,
 		{ new: true }
 	);
-
-	/* adds exp back in based on new info */
-	// only IDs will be added to arrays, so we must populate
-	await updatedRecord.populate();
-	// loop to update player exp and games played (winners)
-	await updatedRecord.gameWinners.forEach((player) => {
-		addWin(player);
-	});
-	// same loop for losing array
-	await updatedRecord.runnersUp.forEach((player) => {
-		addLoss(player);
-	});
-
 	// redirect to show page for updated profile
 	res.redirect(`/champions/records/${updatedRecord._id}`);
 };
@@ -167,19 +118,7 @@ const remove = async (req, res) => {
 
 // deletes player profile (back-end only)
 const destroy = async (req, res) => {
-	// locate chosen record to remove associated exp pts
-	const chosenRecord = await Record.findById(req.params.recordId);
-	// only IDs will be added to arrays, so we must populate
-	await chosenRecord.populate();
-	// loop to update player exp and games played (winners)
-	await chosenRecord.gameWinners.forEach((player) => {
-		subtractWin(player);
-	});
-	// same loop for losing array
-	await chosenRecord.runnersUp.forEach((player) => {
-		subtractLoss(player);
-	});
-	// finally, grab DB entry and deletes on the back-end
+	// grabs DB entry and deletes on the back-end
 	await Record.findByIdAndDelete(req.params.recordId);
 	// redirect to all records page after back-end delete
 	res.redirect("/champions/records");
@@ -187,8 +126,8 @@ const destroy = async (req, res) => {
 
 /* TEST */
 const test = (req, res) => {
-	console.log(req.body)
-}
+	console.log(req.body);
+};
 
 /* EXPORT */
 
@@ -202,5 +141,5 @@ module.exports = {
 	update,
 	remove,
 	destroy,
-	test
+	test,
 };

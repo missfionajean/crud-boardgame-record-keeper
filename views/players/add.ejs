@@ -12,16 +12,17 @@
 
             <!-- player first name (text input) -->
             <label for="playerName">Name</label>
+            <p class="input-exp">Enter a name for your hero. It should be your first name or an easily identifiable moniker.</p>
             <input type="text" name="playerName" id="playerName">
-            <p class="input-exp">Enter a name for your hero. It can be your first name or an esily identifiable moniker. As long as people know it's you, it's cool!</p>
 
             <!-- player title, adjective (text input) -->
             <label for="playerTitle">Title</label>
+            <p class="input-exp">Enter a title to appear after your name. Ex: "James" + "Fabulous Sexy Beast" appears as "James the Fabulous Sexy Beast".</p>
             <input type="text" name="playerTitle" id="playerTitle">
-            <p class="input-exp">Enter a word(s) to appear after your name. Ex: Entering the name "James" and the title "Fabulous Sexy Beast" will make your hero appear as "James the Fabulous Sexy Beast".</p>
 
             <!-- player color drop-down (color type) -->
             <label for="playerColor">Color</label>
+            <p class="input-exp">Select a color for your dragon avatar, as well as your name on certain pages.</p>
             <select name="playerColor" id="playerColor">
                 <option value="242424">Black</option>
                 <option value="3a76d0">Blue</option>
@@ -36,10 +37,21 @@
                 <option value="d9d9d9">Silver</option>
                 <option value="d0c13a">Yellow</option>
             </select>
-            <p class="input-exp">Select a color to indentify your hero. This will determine the color of your avatar, as well as your name in certain sitautions.</p>
 
             <!-- pass playerAvatar to req.body (hidden in CSS) -->
             <input type="text" id="playerAvatar" name="playerAvatar" value="">
+
+            <!-- strengths (three text inputs) -->
+            <label for="playerStrengths">Strengths</label>
+            <p class="input-exp">Enter your three greatest strengths at the board game table.</p>
+            <input type="text" name="playerStrengths" id="playerStrengths">
+            <input type="text" name="playerStrengths" id="playerStrengths">
+            <input type="text" name="playerStrengths" id="playerStrengths">
+
+            <!-- about player (three text inputs) -->
+            <label for="playerFaves">Favorites</label>
+            <p class="input-exp">Enter your favorite board games, types of board games, whatever you want!</p>
+            <textarea name="playerFaves" id="playerFaves" rows="3"></textarea>
 
         <div class="button-box">
             <button type="submit">Submit Profile</button>
