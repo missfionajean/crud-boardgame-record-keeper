@@ -21,7 +21,8 @@ const leader = async (req, res) => {
 	// parses all records for win counts (filterable later)
 	allRecords.forEach((record) => {
 		record.gameWinners.forEach((winner) => {
-			winMap.get(winner).val++;
+			try{winMap.get(winner).val++;}
+			catch{console.log("Skipping non-existent player.")}
 		})
 	})
 
